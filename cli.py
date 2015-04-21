@@ -1,6 +1,11 @@
 # insert data via comand line 
 
 import sqlite3
+import os.path
+
+db_name = 'expenses_by_category.db'
+path_to_db = os.path.dirname(os.path.abspath(__file__)) + '/db/' + db_name
+print(path_to_db)
 
 def add_expense_to_db(string):
 	""" Get data for expense table 
@@ -13,7 +18,7 @@ def add_expense_to_db(string):
 	data = string.split()
 	print(data)
 
-	connection = sqlite3.connect('expenses_by_category.db')
+	connection = sqlite3.connect(path_to_db)
 	cursor = connection.cursor()
 	cursor.execute("""INSERT INTO expense (expense_date, total_sum, total_discount, category_id) VALUES (?,?,?,?)""", data)
 	connection.commit()
@@ -22,7 +27,7 @@ def add_expense_to_db(string):
 def list_expenses():
 	''' Print list with records in expense table'''
 
-	connection = sqlite3.connect('expenses_by_category.db')
+	connection = sqlite3.connect(path_to_db)
 	cursor = connection.cursor()
 	cursor.execute("""SELECT * FROM expense""")
 	res = cursor.fetchall()
@@ -32,7 +37,7 @@ def list_expenses():
 
 def delete_expense(ex_id):
 	''' Delete expense from db via expense_id'''
-	connection = sqlite3.connect('expenses_by_category.db')
+	connection = sqlite3.connect(path_to_db)
 	cursor = connection.cursor()
 	cursor.execute('''DELETE FROM expense WHERE expense_id = ?''', ex_id)
 	connection.commit()
@@ -44,7 +49,7 @@ def update_expense(ex_id,d_str):
 	data = d_str.split()
 	data.append(ex_id)
 
-	connection = sqlite3.connect('expenses_by_category.db')
+	connection = sqlite3.connect(path_to_db)
 	cur = connection.cursor()
 	cur.execute('UPDATE expense SET expense_date = ?, total_sum = ?, total_discount = ?, category_id = ? WHERE expense_id = ?', data)
 	connection.commit()
@@ -53,7 +58,7 @@ def update_expense(ex_id,d_str):
 def read_expese(ex_id_string):
 	""" Select expense record via expense_id """
 
-	connection = sqlite3.connect('expenses_by_category.db')
+	connection = sqlite3.connect(path_to_db)
 	cur = connection.cursor()
 	cur.execute("SELECT * FROM expense WHERE expense_id = ?",ex_id_string)
 	r = cur.fetchall()

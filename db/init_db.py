@@ -6,7 +6,8 @@ expense_table = '''CREATE TABLE IF NOT EXISTS expense
 	expense_date TEXT,
 	total_sum INTEGER,
 	total_discount INTEGER,
-	category_id INTEGER)'''
+	category_id INTEGER,
+	FOREIGN KEY (category_id) REFERENCES categories(category_id))'''
 
 items_table = '''CREATE TABLE IF NOT EXISTS items
 	(item_ id INTEGER PRIMARY KEY, 
