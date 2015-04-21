@@ -1,7 +1,10 @@
 import sqlite3
 
+db_name = 'expenses_by_category.db'
+path_to_db = os.path.dirname(os.path.abspath(__file__)) + '/' + db_name
+
 #sql statements
-foreign_key_availavle = '''PRAGMA foreign_keys = ON;'''
+foreign_key_availavle = '''PRAGMA foreign_keys = ON'''
 
 expense_table = '''CREATE TABLE IF NOT EXISTS expense 
 	(expense_id INTEGER PRIMARY KEY, 
@@ -22,12 +25,10 @@ items_table = '''CREATE TABLE IF NOT EXISTS items
 category_table = '''CREATE TABLE IF NOT EXISTS categories 
 	(category_id INTEGER PRIMARY KEY, 
 	name TEXT, 
-	parent_category_id INTEGER ,
-	child_category_id INTEGER ,
-	FOREIGN KEY (parent_category_id) REFERENCES categories(category_id),
-	FOREIGN KEY (child_category_id) REFERENCES categories(category_id))'''
+	parent_category_id INTEGER,
+	FOREIGN KEY (parent_category_id) REFERENCES categories(category_id))'''
 
-connection = sqlite3.connect('expenses_by_category.db')
+connection = sqlite3.connect(path_to_db)
 
 cursor = connection.cursor()
 
