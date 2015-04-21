@@ -1,1 +1,2 @@
 1. db is in 'my_project_name/db' folder. Script cli.py in 'my_project_name' folder
+2. Need to enable foreign key for each connection ('''PRAGMA foreign_keys = ON''')

@@ -1,6 +1,8 @@
 import sqlite3
 
 #sql statements
+foreign_key_availavle = '''PRAGMA foreign_keys = ON;'''
+
 expense_table = '''CREATE TABLE IF NOT EXISTS expense 
 	(expense_id INTEGER PRIMARY KEY, 
 	expense_date TEXT,
@@ -28,6 +30,8 @@ category_table = '''CREATE TABLE IF NOT EXISTS categories
 connection = sqlite3.connect('expenses_by_category.db')
 
 cursor = connection.cursor()
+
+cursor.execute(foreign_key_availavle)
 
 cursor.execute(expense_table)
 

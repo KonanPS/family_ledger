@@ -20,6 +20,7 @@ def add_expense_to_db(string):
 
 	connection = sqlite3.connect(path_to_db)
 	cursor = connection.cursor()
+	cursor.execute('''PRAGMA foreign_keys = ON''') # enable foreign keys
 	cursor.execute("""INSERT INTO expense (expense_date, total_sum, total_discount, category_id) VALUES (?,?,?,?)""", data)
 	connection.commit()
 	connection.close()
@@ -29,6 +30,7 @@ def list_expenses():
 
 	connection = sqlite3.connect(path_to_db)
 	cursor = connection.cursor()
+	cursor.execute('''PRAGMA foreign_keys = ON''') # enable foreign keys
 	cursor.execute("""SELECT * FROM expense""")
 	res = cursor.fetchall()
 	for r in res:
@@ -39,6 +41,7 @@ def delete_expense(ex_id):
 	''' Delete expense from db via expense_id'''
 	connection = sqlite3.connect(path_to_db)
 	cursor = connection.cursor()
+	cursor.execute('''PRAGMA foreign_keys = ON''') # enable foreign keys
 	cursor.execute('''DELETE FROM expense WHERE expense_id = ?''', ex_id)
 	connection.commit()
 	connection.close()
@@ -51,6 +54,7 @@ def update_expense(ex_id,d_str):
 
 	connection = sqlite3.connect(path_to_db)
 	cur = connection.cursor()
+	cur.execute('''PRAGMA foreign_keys = ON''') # enable foreign keys
 	cur.execute('UPDATE expense SET expense_date = ?, total_sum = ?, total_discount = ?, category_id = ? WHERE expense_id = ?', data)
 	connection.commit()
 	connection.close()
@@ -60,6 +64,7 @@ def read_expese(ex_id_string):
 
 	connection = sqlite3.connect(path_to_db)
 	cur = connection.cursor()
+	cur.execute('''PRAGMA foreign_keys = ON''') # enable foreign keys
 	cur.execute("SELECT * FROM expense WHERE expense_id = ?",ex_id_string)
 	r = cur.fetchall()
 	print(r)
