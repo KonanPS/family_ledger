@@ -1,4 +1,5 @@
 import sqlite3
+import os.path
 
 db_name = 'expenses_by_category.db'
 path_to_db = os.path.dirname(os.path.abspath(__file__)) + '/' + db_name
