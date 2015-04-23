@@ -2,6 +2,8 @@
 
 import sqlite3
 import os.path
+import datetime
+import time
 
 db_name = 'expenses_by_category.db'
 path_to_db = os.path.dirname(os.path.abspath(__file__)) + '/db/' + db_name
@@ -13,9 +15,13 @@ def add_expense_to_db(string):
 		as a string with space as separator
 
 		Connects to db and inserts data to expense table
-		commit changes and close connection'''
+		commit changes and close connection
+
+		Convert expense date to unix timestamp with respect to local timezone
+	'''
 
 	data = string.split()
+	data[0] = time.mktime(datetime.datetime.strptime(data[0],'%d-%m-%Y').timetuple())
 	try:
 		connection = sqlite3.connect(path_to_db)
 		cursor = connection.cursor()

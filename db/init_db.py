@@ -9,7 +9,7 @@ foreign_key_availavle = '''PRAGMA foreign_keys = ON'''
 
 expense_table = '''CREATE TABLE IF NOT EXISTS expense 
 	(expense_id INTEGER PRIMARY KEY, 
-	expense_date TEXT,
+	expense_date INTEGER,
 	total_sum INTEGER,
 	total_discount INTEGER,
 	category_id INTEGER,
