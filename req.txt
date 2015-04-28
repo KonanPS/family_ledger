@@ -1,0 +1,33 @@
+* TODO:
+ 
+1. Add reject list (date, item, price)
+
+
+* Family (Business) Requirements.
+
+** My (business) need. 
+I want to know if I earn enough for our family. 
+I want to know if we could afford credit for new flat, car, etc.
+I want to plan annual income-expense balance.
+I want to know how much money i can risk.
+
+earn enough - support family requests, balance between accepted and rejected (too expensive)
+  
+* Functional req.
+|id|description|priority|state|
+|--+--+--+--+|
+ 
+* Non-Functional req.
+|id|description|priority|state|
+||||
+|--+--+--+--+|
+|category.display|'List categories' shall display categories as hierarchy tree (like python code indents)|high| |
+|db.connection|Use one connection to db for session vs. distinct connection for each operation |medium|  done  |
+
+
+
+category.display
+
+1. Top level parent category has itself as a parent
+2. For each record in categore I can track way to top level parent
+3. For each parent I can find direct children 
