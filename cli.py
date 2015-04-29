@@ -80,11 +80,28 @@ def add_category(data_str,cursor):
 
 def list_categories(cursor):
 	''' Print records in categories table'''
-
+	parent = {}
+	cat_id_name = {}
 	cursor.execute("""SELECT * FROM categories""")
 	res = cursor.fetchall()
+	#creating stucture description
 	for r in res:
-		print(r)
+		cat_id_name[r[0]] = r[1]
+		if r[0] == r[2]:
+			parent[r[0]] = [] #for top parent (id, name) creates empty list for children_ids
+		elif r[2] in list(parent.keys()):
+			parent[r[2]].append(r[0])# for each parent adds (child_id, cat_name) to children list
+
+		#else if not in top-parent list???? (second, third, etc level)
+	print(parent)
+
+	# printing structure
+	for k in parent:
+		print(k, cat_id_name[k])
+		for c in parent[k]:
+			print('\t', c, cat_id_name[c])
+		print()
+	
 
 def delete_category(cat_id,cursor):
 	''' Delete record from categories table via category_id'''

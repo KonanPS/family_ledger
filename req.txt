@@ -31,3 +31,4 @@ category.display
 1. Top level parent category has itself as a parent
 2. For each record in categore I can track way to top level parent
 3. For each parent I can find direct children 
+4. Chiled can be inserted in table only before parent (foriegn key constrain)
