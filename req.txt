@@ -1,6 +1,8 @@
 * TODO:
  
-1. Add reject list (date, item, price)
+0. Expense (bill, check, ...) can't have category. Items in it do. When I made an expense I has ckeck. For all of them I know date, total sum and place. When I entered this data, system shall ask if i need to specify items in it or category + item price for this total check (in case if there is one item). Technicaly system shall insert check data to expenses table and create linked record in items table. If expense and items entered correctly them total sums must be equal.
+
+2. Add reject list (date, item, price)
 
 
 * Family (Business) Requirements.
