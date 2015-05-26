@@ -118,31 +118,32 @@ def update_category(cat_id, d_str,cursor):
 	cur.execute('UPDATE categories SET name = ?, parent_category_id = ? WHERE category_id = ?', data)
 	connection.commit()
 
-def print_menu():
-	''' Printing menu '''
-	print('''
-	---------------------------------
-	|            Menu               |
-	---------------------------------
-	    1. Expenses
-	         11. Add expence
-	         12. List expenses
-	         13. Delete expense
-	         14. Update expense 
-	         15. Display expense
+class Menu:
+	def print_menu():
+		''' Printing menu '''
+		print('''
+		---------------------------------
+		|            Menu               |
+		---------------------------------
+		    1. Expenses
+		         11. Add expence
+		         12. List expenses
+		         13. Delete expense
+		         14. Update expense 
+		         15. Display expense
 
-	    2. Categories
-	    	 21. Add category
-	    	 22. List categories
-	    	 23. Delete category
-	    	 24. Update categories
-	         ----------------
-	         m. Menu
-	         q. Exit
-	''')
+		    2. Categories
+		    	 21. Add category
+		    	 22. List categories
+		    	 23. Delete category
+		    	 24. Update categories
+		         ----------------
+		         m. Menu
+		         q. Exit
+		''')
 
 
-print_menu()
+Menu.print_menu()
 connect_to_db(path_to_db)
 
 while True:
