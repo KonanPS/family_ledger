@@ -119,6 +119,9 @@ def update_category(cat_id, d_str,cursor):
 	connection.commit()
 
 class Menu:
+	def __init__():
+		pass
+		
 	def print_menu():
 		''' Printing menu '''
 		print('''
